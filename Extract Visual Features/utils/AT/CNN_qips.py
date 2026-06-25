@@ -182,5 +182,11 @@ def CNN_symmetry(input_img, kernel, bias):
     resp_ud = conv2d(img_ud, kernel, bias)
     max_pooling_map_ud, _ = max_pooling (resp_ud, patches=17)
     sym_ud = get_differences(max_pooling_map_orig, max_pooling_map_ud)
+
+    ### get max pooling map for up-down and left-right fliped image
+    img_lrud = np.fliplr(np.flipud(input_img))
+    resp_lrud = conv2d(img_lrud, kernel, bias)
+    max_pooling_map_lrud, _ = max_pooling (resp_lrud, patches=17)
+    sym_lrud = get_differences(max_pooling_map_orig, max_pooling_map_lrud)
     
-    return sym_lr, sym_ud
+    return sym_lr, sym_ud, sym_lrud
