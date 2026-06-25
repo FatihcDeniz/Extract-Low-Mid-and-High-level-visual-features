@@ -190,10 +190,12 @@ def first_and_second_order_entropy_and_edge_density(img_gray, GABOR_BINS=24):
     img = edge_resize(img_gray)
     resp_bin, resp_val = run_filterbank(flt_raw, img)
 
-    edge_d = edge_density(resp_val)
+    normalize_fac = float(resp_val.shape[0] * resp_val.shape[1])
+    
+    edge_d  = np.sum(resp_val) / normalize_fac
+
 
     counts, resp_val = do_counting_fast(resp_val, resp_bin, GABOR_BINS=GABOR_BINS)
-
     first_order_bin = np.zeros(GABOR_BINS, dtype=np.float64)
     for b in range(GABOR_BINS):
         first_order_bin[b] = np.sum(resp_val[resp_bin == b])
