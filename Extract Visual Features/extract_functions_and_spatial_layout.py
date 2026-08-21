@@ -1,12 +1,13 @@
 
 """
-This script extracts high-level semantic features (scene functions and spatial layout)
-from images using the Places365 WideResNet model. Some of the code were taken from
-https://github.com/csailvision/places365, so please also cite them.
+This script extracts high-level semantic features (scene functions and spatial layout) from images using the Places365 WideResNet model. 
+
+Reference: Zhou, B., Lapedriza, A., Khosla, A., Oliva, A., & Torralba, A. (2017). Places: A 10 million image database for scene recognition. IEEE transactions on pattern analysis and machine intelligence, 40(6), 1452-1464.
+Model Page: https://github.com/csailvision/places365
+
+Some of the code were taken from the original repository (https://github.com/csailvision/places365), so if you use this code please cite them.
 
 """
-
-
 import torch
 from torch.autograd import Variable as V
 import torchvision.models as models
@@ -19,7 +20,6 @@ import pandas as pd
 from utils.utils import is_image, check_create_directory
 
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
-
 
 # hacky way to deal with the Pytorch 1.0 update
 def recursion_change_bn(module):
@@ -212,7 +212,7 @@ for folder in os.listdir(image_loc):
                     
             img_scores[image] = label_dict
             print(f"Finished {image}.")
-                    
+# Transform the `img_scores` to a pandas dataframe 
 image_scores = pd.DataFrame(img_scores).T
 image_scores = image_scores.reset_index()
 image_scores.rename(columns = {"index":"image"}, inplace = True)
@@ -225,10 +225,10 @@ functions = ["boating","driving","biking","transporting","sunbathing","touring",
              "conducting business","praying", "image"]
 # List of spatial layout features extracted from Places
 layout = ["open area", "semi-enclosed area", "enclosed area", "far-away horizon", "no horizon", "image"]
-
+# Filter data
 functions_data = image_scores.loc[:, image_scores.columns.isin(functions)]
 layout_data = image_scores.loc[:, image_scores.columns.isin(layout)]
-
+# Save the data
 functions_data.to_csv(os.path.join(save_loc_functions, "functions.csv"), index = False)
 layout_data.to_csv(os.path.join(save_loc_layout, "layout.csv"), index = False)
 

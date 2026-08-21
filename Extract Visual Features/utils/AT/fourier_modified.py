@@ -1,3 +1,12 @@
+""""
+This is modified copy of fourier_qips.py from https://github.com/RBartho/Aesthetics-Toolbox/tree/main.
+
+If you use this code please cite their original paper https://link.springer.com/article/10.3758/s13428-025-02632-3.
+
+Compared to original code we vectorized and cached the code. In order to see comparison between original
+and modifed versions please see "compare_results.ipynb".
+"""
+
 import numpy as np
 import PIL
 from functools import lru_cache

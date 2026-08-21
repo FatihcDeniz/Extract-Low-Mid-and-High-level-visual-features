@@ -10,8 +10,12 @@ Features include:
 - Edge entropy and edge density
 - Symmetry (left-right and up-down)
 
-We use some code from the Aesthetic Toolbox:
-https://github.com/rbartho/aesthetics-toolbox
+We used Aesthetic Toolbox (https://github.com/rbartho/aesthetics-toolbox) quantify Edge density, edge entropy, Fourier slope, Fourier sigma, symmetry left, symmetry right and symmetry left-right. 
+We modified the original code to include vectorization and caching. You can compare the results and time it takes between original and modified code using `compare_results.ipynb`. If you use this 
+code please also cite the original toolbox and paper. 
+
+Reference: Redies, C., Bartho, R., Koßmann, L., Spehar, B., Hübner, R., Wagemans, J., & Hayn-Leichsenring, G. U. (2025). A toolbox for calculating quantitative image properties in aesthetics research. Behavior Research Methods, 57(4), 117.
+Model Page: https://github.com/rbartho/aesthetics-toolbox
 """
 
 import numpy as np

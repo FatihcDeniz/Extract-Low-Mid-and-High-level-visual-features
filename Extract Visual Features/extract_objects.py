@@ -1,11 +1,10 @@
 """
-This script extracts object presence information from images using the
-MaskFormer model for panoptic segmentation.
+This script extracts object presence information from images using the MaskFormer model for panoptic segmentation.
 
-Reference:
-https://huggingface.co/docs/transformers/en/model_doc/maskformer
+Reference: Cheng, B., Schwing, A., & Kirillov, A. (2021). Per-pixel classification is not all you need for semantic segmentation. Advances in neural information processing systems, 34, 17864-17875.
+Model Page: https://huggingface.co/docs/transformers/en/model_doc/maskformer
+
 """
-
 import torch 
 from transformers import MaskFormerForInstanceSegmentation, MaskFormerImageProcessor
 from PIL import Image

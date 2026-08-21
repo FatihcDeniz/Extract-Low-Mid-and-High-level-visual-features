@@ -1,9 +1,12 @@
-"""
-This code originally taken from https://github.com/rbartho/aesthetics-toolbox. I just changed them to 
-make it faster. It gives the same results. You can comapre them in xxx.py
+""""
+This is modified copy of CNN_qips.py from https://github.com/RBartho/Aesthetics-Toolbox/tree/main.
+
+If you use this code please cite their original paper https://link.springer.com/article/10.3758/s13428-025-02632-3.
+
+Compared to original code we vectorized and cached the code. In order to see comparison between original
+and modifed versions please see "compare_results.ipynb".
 
 """
-
 import numpy as np
 from scipy.signal import correlate
 from skimage.transform import resize
